@@ -1,8 +1,11 @@
 <html>
-<body onload="document.getElementById('audioPlayer').play(); setTimeout(()=>{window.location.href='https://previewer.adalo.com/4f199bd5-07b3-408d-abf5-c58f229826f1?target=56gwihm29nlbh59ag5xe4jscf&params=%7B%7D'}, 1000);" style="text-align:center;">
+<body onload="setTimeout(()=>{document.getElementById('playButton').click();}, 500);" style="text-align:center;">
+    <button id="playButton" style="display:none;" onclick="document.getElementById('audioPlayer').play(); setTimeout(()=>{window.location.href='https://你的Adalo页面链接'}, 1000);">
+        点击播放并跳转
+    </button>
+    
     <audio id="audioPlayer">
-        <source src="https://voca.ro/12jsh60nBvxY" type="audio/mp3">
+        <source src="https://www.dropbox.com/scl/fi/rwo4v61w3888m8jz04ip2/start-13691.mp3?rlkey=a1s938u3np1bgzzsr5kmszoaj&raw=1" type="audio/mp3">
     </audio>
 </body>
 </html>
-
