@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sound is ready! Click anywhere to continue.</title>
-</head>
+<html>
 <body onclick="startAudio()" style="text-align:center;">
     <h2>Sound is ready! Click anywhere to continue.</h2>
 
@@ -15,21 +9,17 @@
     <script>
         function startAudio() {
             let audio = document.getElementById("audioPlayer");
-
-            // 防止重复点击
-            document.body.onclick = null; 
-
             audio.play().then(() => {
                 console.log("播放成功");
-                localStorage.setItem("audioEnabled", "true"); // 记录用户互动
+                sessionStorage.setItem("audioAllowed", "true"); // 记住用户允许播放音频
+                setTimeout(() => {
+                    window.location.href = "https://previewer.adalo.com/4f199bd5-07b3-408d-abf5-c58f229826f1?target=9ejsy4swkt428v4103jw14d4q&params=%7B%7D";
+                }, 2000); // 2秒后跳转
             }).catch(error => {
                 console.log("播放失败", error);
-            }).finally(() => {
-                // 无论成功或失败，1 秒后跳转
-                setTimeout(() => {
-                    window.location.replace("https://previewer.adalo.com/4f199bd5-07b3-408d-abf5-c58f229826f1?target=9ejsy4swkt428v4103jw14d4q&params=%7B%7D");
-                }, 1000);
             });
+
+            document.body.onclick = null;
         }
     </script>
 </body>
