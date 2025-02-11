@@ -1,43 +1,21 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>demo</title>
-</head>
-<body>
-    <!-- 隐藏的可交互按钮 -->
-    <button id="playButton" style="display: none;">播放音乐</button>
+<html>
+<body onload="playAudioAndRedirect();" style="text-align:center;">
+    <video id="audioPlayer" muted playsinline>
+        <source src="https://www.dropbox.com/scl/fi/rwo4v61w3888m8jz04ip2/start-13691.mp3?rlkey=a1s938u3np1bgzzsr5kmszoaj&raw=1" type="audio/mp3">
+    </video>
 
     <script>
-        // 用户首次点击页面任意位置后触发流程
-        document.addEventListener('click', initProcess, { once: true });
-
-        function initProcess() {
-            // 创建音频对象
-            const audio = new Audio('https://www.dropbox.com/scl/fi/rwo4v61w3888m8jz04ip2/start-13691.mp3?rlkey=a1s938u3np1bgzzsr5kmszoaj&raw=1
-');
-            
-            // 自动触发隐藏按钮点击
-            const btn = document.getElementById('playButton');
-            btn.addEventListener('click', () => {
-                audio.play().catch(error => {
-                    console.error('播放失败:', error);
-                });
-            });
-
-            // 0.5秒后模拟点击
-            setTimeout(() => {
-                btn.click();
-                // 2秒后跳转
+        function playAudioAndRedirect() {
+            let audio = document.getElementById('audioPlayer');
+            audio.muted = false; // 取消静音
+            audio.play().then(() => {
                 setTimeout(() => {
-                    window.location.href = 'https://previewer.adalo.com/4f199bd5-07b3-408d-abf5-c58f229826f1?target=56gwihm29nlbh59ag5xe4jscf&params=%7B%7D';
-                }, 2000);
-            }, 500);
+                    window.location.href = "https://previewer.adalo.com/4f199bd5-07b3-408d-abf5-c58f229826f1?target=56gwihm29nlbh59ag5xe4jscf&params=%7B%7D";
+                }, 2000); // 2 秒后跳转
+            }).catch(error => {
+                console.log("自动播放失败", error);
+            });
         }
-
-        // 显示提示信息
-        document.body.innerHTML += '<p style="color: blue; cursor: pointer;">点击页面任意位置开始流程</p>';
     </script>
 </body>
 </html>
