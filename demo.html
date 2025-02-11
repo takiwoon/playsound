@@ -15,19 +15,21 @@
     <script>
         function startAudio() {
             let audio = document.getElementById("audioPlayer");
+
+            // 防止重复点击
+            document.body.onclick = null; 
+
             audio.play().then(() => {
                 console.log("播放成功");
                 localStorage.setItem("audioEnabled", "true"); // 记录用户互动
-
-                // 1 秒后跳回 Adalo
-                setTimeout(() => {
-                    window.location.replace() = "https://previewer.adalo.com/4f199bd5-07b3-408d-abf5-c58f229826f1?target=9ejsy4swkt428v4103jw14d4q&params=%7B%7D";
-                }, 1000);
             }).catch(error => {
                 console.log("播放失败", error);
+            }).finally(() => {
+                // 无论成功或失败，1 秒后跳转
+                setTimeout(() => {
+                    window.location.replace("https://previewer.adalo.com/4f199bd5-07b3-408d-abf5-c58f229826f1?target=9ejsy4swkt428v4103jw14d4q&params=%7B%7D");
+                }, 1000);
             });
-
-            document.body.onclick = null;
         }
     </script>
 </body>
