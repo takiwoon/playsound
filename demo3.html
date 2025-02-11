@@ -1,20 +1,20 @@
 <html>
-<body onload="playVideoAndRedirect();" style="text-align:center;">
-    <video id="videoPlayer" muted autoplay playsinline>
-        <source src="https://www.dropbox.com/scl/fi/pokrm5lcxslw8m8luv4m8/start-13691-1.mp4?rlkey=ujpjsapjdp6drbkqd9mdkbt7c&raw=1" type="video/mp4">
-    </video>
+<body onload="playSilentAudio();" style="text-align:center;">
+    <audio id="silentAudio" autoplay loop>
+        <source src="data:audio/mp3;base64,//uQxAAAAAElFTkSuQmCC" type="audio/mp3">
+    </audio>
 
     <script>
-        function playVideoAndRedirect() {
-            let video = document.getElementById('videoPlayer');
-            video.play().then(() => {
+        function playSilentAudio() {
+            let silentAudio = document.getElementById('silentAudio');
+            silentAudio.play().then(() => {
                 setTimeout(() => {
-                    video.muted = false; // 取消静音
-                    video.volume = 1.0; // 确保音量正常
+                    let newAudio = new Audio("https://www.dropbox.com/scl/fi/pokrm5lcxslw8m8luv4m8/start-13691-1.mp4?rlkey=ujpjsapjdp6drbkqd9mdkbt7c&raw=1");
+                    newAudio.play();
                     setTimeout(() => {
                         window.location.href = "https://previewer.adalo.com/4f199bd5-07b3-408d-abf5-c58f229826f1?target=56gwihm29nlbh59ag5xe4jscf&params=%7B%7D";
                     }, 3000); // 3 秒后跳转
-                }, 500); // 先等 0.5 秒再取消静音
+                }, 500);
             }).catch(error => {
                 console.log("自动播放失败", error);
             });
