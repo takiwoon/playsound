@@ -1,21 +1,12 @@
 <html>
-<body onload="playAudioAndRedirect();" style="text-align:center;">
-    <video id="audioPlayer" muted playsinline>
-        <source src="https://www.dropbox.com/scl/fi/rwo4v61w3888m8jz04ip2/start-13691.mp3?rlkey=a1s938u3np1bgzzsr5kmszoaj&raw=1" type="audio/mp3">
-    </video>
-
+<head>
     <script>
-        function playAudioAndRedirect() {
-            let audio = document.getElementById('audioPlayer');
-            audio.muted = false; // 取消静音
-            audio.play().then(() => {
-                setTimeout(() => {
-                    window.location.href = "https://previewer.adalo.com/4f199bd5-07b3-408d-abf5-c58f229826f1?target=56gwihm29nlbh59ag5xe4jscf&params=%7B%7D";
-                }, 2000); // 2 秒后跳转
-            }).catch(error => {
-                console.log("自动播放失败", error);
-            });
-        }
+        setTimeout(() => {
+            window.location.href = "https://previewer.adalo.com/4f199bd5-07b3-408d-abf5-c58f229826f1?target=56gwihm29nlbh59ag5xe4jscf&params=%7B%7D";
+        }, 2000); // 2 秒后跳转
     </script>
+</head>
+<body>
+    <iframe src="https://你的GitHub音频页面" style="width:1px; height:1px; border:0;"></iframe>
 </body>
 </html>
